@@ -25,7 +25,7 @@ class Searchlights(BaseStripAnim):
             if count == 1:
                 positions = [1 / 2]
             else:
-                positions = [i / (count - 1) for i in range(count)]
+                positions = [i / (count) for i in range(count)]
 
         if not isinstance(times, (list, tuple)):
             times = [times]
@@ -36,12 +36,12 @@ class Searchlights(BaseStripAnim):
         if not isinstance(positions, (list, tuple)):
             positions = [positions]
 
+        print('!!!', positions)
         if not colors:
             if count == 1:
                 colors = [util.colors.Yellow]
             else:
-                colors = [wheel.wheel_helper(loc, len(positions), 0)
-                          for loc in positions]
+                colors = [wheel.wheel_helper(p, 1, 0) for p in positions]
 
         n = len(self.color_list)
         speeds = [1 / t for t in times]
