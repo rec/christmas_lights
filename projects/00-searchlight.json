@@ -1,14 +1,10 @@
 {
-    "layout": {
-        "simpixel": "strip",
-        "num":200
-    },
+    "dimensions": 80,
     "run": {"fps": 30},
-    "layout": "strip",
     "animation": {
         "typename": "christmas_lights.Searchlights",
-        "count": 2,
-        "widths" : 0.25
+        "count": 5,
+        "speeds": "rand(-0.5, 0.5)"
     },
     "maker": {"numpy_dtype": "float"}
 }

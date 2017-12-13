@@ -1,16 +1,25 @@
-import numpy as np
+import random, numbers, numpy as np
+
 
 
 class Light:
     def __init__(self, color_list, speed, bound, position, color, width, shape):
+        def number(x):
+            if isinstance(x, numbers.Number):
+                return x
+            if not x.startswith('rand('):
+                raise ValueError("Don't understand number '%s'" % x)
+            lo, hi = (float(i) for i in x[5:-1].split(','))
+            return random.uniform(lo, hi)
+
         self.color_list = color_list
-        self.speed = speed
+        self.speed = number(speed)
         self.bound = bound
-        self.position = position
+        self.position = number(position)
         self.color = np.array(color, dtype=float)
         self.shape = shape
         self.fps = 0
-        self.radius = round(width * len(color_list) / 2)
+        self.radius = round(number(width) * len(color_list) / 2)
 
         fade_in = np.linspace(0, 1, self.radius, endpoint=False, dtype=float)
         fade_out = np.linspace(1, 0, self.radius, endpoint=False, dtype=float)
@@ -41,8 +50,6 @@ class Light:
         # Handle subpixel positioning.
         whole, fraction = divmod(self.position * N, 1)
         left, right = int(whole) - self.radius, int(whole) + self.radius
-
-        #    print('display!', left, right)
 
         add(left, right, 1 - fraction)
         if fraction:

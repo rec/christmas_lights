@@ -5,17 +5,17 @@ from bibliopixel.animation import BaseStripAnim
 from bibliopixel import util
 from bibliopixel.util.colors import wheel
 
-DEFAULT_TIME = 3
+DEFAULT_SPEED = 1 / 3
 
 
 class Searchlights(BaseStripAnim):
-    def __init__(self, layout, *, count=3, times=DEFAULT_TIME, bounds=None,
-                 positions=None, colors=None, widths=0.15, shapes='linear',
+    def __init__(self, layout, *, count=3, speeds=DEFAULT_SPEED, bounds=None,
+                 positions=None, colors=None, widths=None, shapes='linear',
                  background_color=util.colors.Black, **kwds):
         """
         Arguments
 
-        times -- time to move the light across the entire string
+        speeds -- speed to move the light across the entire string
         """
         super().__init__(layout, **kwds)
         self.background_color = background_color
@@ -27,8 +27,11 @@ class Searchlights(BaseStripAnim):
             else:
                 positions = [i / (count) for i in range(count)]
 
-        if not isinstance(times, (list, tuple)):
-            times = [times]
+        if not widths:
+            widths = [1 / (2 * count)]
+
+        if not isinstance(speeds, (list, tuple)):
+            speeds = [speeds]
         if not isinstance(widths, (list, tuple)):
             widths = [widths]
         if not isinstance(shapes, (list, tuple)):
@@ -36,7 +39,6 @@ class Searchlights(BaseStripAnim):
         if not isinstance(positions, (list, tuple)):
             positions = [positions]
 
-        print('!!!', positions)
         if not colors:
             if count == 1:
                 colors = [util.colors.Yellow]
@@ -44,7 +46,6 @@ class Searchlights(BaseStripAnim):
                 colors = [wheel.wheel_helper(p, 1, 0) for p in positions]
 
         n = len(self.color_list)
-        speeds = [1 / t for t in times]
         bounds = bounds or [(0, 1)]
 
         arrays = speeds, bounds, positions, colors, widths, shapes
