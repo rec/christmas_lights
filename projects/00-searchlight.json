@@ -6,12 +6,13 @@
         "gamma": [1.1, 0.5, 0]
     },
     "dimensions": 80,
-    "run": {"fps": 30},
+    "run": {"fps": 60},
     "animation": {
         "typename": "christmas_lights.Searchlights",
-        "count": 3,
-        "widths": 0.25,
-        "speeds": 0.30
+        "count": 2,
+        "widths": 0.4,
+        "speeds": 0.02,
+        "colors": ["red", "green"]
     },
     "maker": {"numpy_dtype": "float"}
 }
