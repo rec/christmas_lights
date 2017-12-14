@@ -44,12 +44,12 @@ class Searchlights(BaseStripAnim):
                 colors = [util.colors.Yellow]
             else:
                 colors = [wheel.wheel_helper(p, 1, 0) for p in positions]
+                colors = [(2 * r, 2 * g, 2 * b) for r, g, b in colors]
 
         n = len(self.color_list)
         bounds = bounds or [(0, 1)]
 
         arrays = speeds, bounds, positions, colors, widths, shapes
-
         def make_light(i):
             return Light(self.color_list, *[a[i % len(a)] for a in arrays])
 

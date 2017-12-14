@@ -1,5 +1,5 @@
 import random, numbers, numpy as np
-
+from . import envelope
 
 
 class Light:
@@ -19,13 +19,14 @@ class Light:
         self.color = np.array(color, dtype=float)
         self.shape = shape
         self.fps = 0
-        self.radius = round(number(width) * len(color_list) / 2)
+        self.radius = max(1, round(number(width) * len(color_list) / 2))
+        curve = envelope.CURVES[shape]
 
-        fade_in = np.linspace(0, 1, self.radius, endpoint=False, dtype=float)
-        fade_out = np.linspace(1, 0, self.radius, endpoint=False, dtype=float)
+        fade_in = curve(0, 1, self.radius)
+        fade_out = curve(1, 0, self.radius)
 
-        envelope = np.concatenate([fade_in, fade_out])
-        self.pixels = np.outer(envelope, color)
+        env = np.concatenate([fade_in, fade_out])
+        self.pixels = np.outer(env, color)
 
     def _display(self):
         N = len(self.color_list)

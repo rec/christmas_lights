@@ -3,9 +3,10 @@
     "run": {"fps": 30},
     "animation": {
         "typename": "christmas_lights.Searchlights",
-        "count": 16,
-        "widths": 0.01,
-        "speeds": 0.01
+        "count": 3,
+        "shapes": "six",
+        "widths": 0.25,
+        "speeds": 0.10
     },
     "maker": {"numpy_dtype": "float"}
 }
