@@ -8,10 +8,10 @@
     "dimensions": 80,
     "run": {"fps": 30},
     "animation": {
-        "typename": "christmas_lights.Searchlights",
-        "count": 3,
-        "widths": 0.25,
-        "speeds": 0.30
+        "mask": [0, 1, 0],
+
+        "range": [  80, 0],
+        "typename": "christmas_lights.Fade"
     },
     "maker": {"numpy_dtype": "float"}
 }

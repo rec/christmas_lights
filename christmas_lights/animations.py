@@ -30,7 +30,7 @@ class ExponentialFade(BaseAnimation):
     def step(self, amt=1):
         self.color_list *= self.ratio
         if self.color:
-             self.color_list[:None] += (1 - self.ratio) * self.color
+             self.color_list[:None] += self.color
 
 
 class Randomize(BaseAnimation):
