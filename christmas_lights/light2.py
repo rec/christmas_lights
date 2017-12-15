@@ -2,7 +2,20 @@ import random, numbers, numpy as np
 from . import envelope
 
 
-class Light:
+class Sprite1d:
+    """A one-dimensional sprite with subpixel positioning."""
+    def __init__(self, icon, color_list, speed=0, bound=(0, 1), position=0,
+                 center=None):
+        self.color_list = color_list
+        self.icon = icon
+        self.speed = speed
+        self.bound = bound
+        self.position = position
+        self.center = int(len(self.icon) / 2) if center is None else center
+        self.fps = 0
+
+
+class Light(Sprite1d):
     def __init__(self, color_list, speed, bound, position, color, width, shape):
         def number(x):
             if isinstance(x, numbers.Number):
@@ -12,13 +25,7 @@ class Light:
             lo, hi = (float(i) for i in x[5:-1].split(','))
             return random.uniform(lo, hi)
 
-        self.color_list = color_list
-        self.speed = number(speed)
-        self.bound = bound
-        self.position = number(position)
         self.color = np.array(color, dtype=float)
-        self.shape = shape
-        self.fps = 0
         self.radius = max(1, round(number(width) * len(color_list) / 2))
         curve = envelope.CURVES[shape]
 
@@ -26,28 +33,31 @@ class Light:
         fade_out = curve(1, 0, self.radius)
 
         env = np.concatenate([fade_in, fade_out])
-        self.pixels = np.outer(env, color)
+        icon = np.outer(env, color)
+
+        super().__init__(
+            icon, color_list, number(speed), bound, number(position))
 
     def _display(self):
         N = len(self.color_list)
 
         def add(left, right, ratio):
             # print('add', left, right, ratio)
-            pixels = self.pixels
+            icon = self.icon
 
             # Is the searchlight visible?
             if right >= 0 and left < N:
                 if left < 0:
                     # It's partly off the left side.
-                    pixels = pixels[-left:]
+                    icon = icon[-left:]
                     left = 0
 
                 if right >= N:
                     # It's partly off the right side.
-                    pixels = pixels[:N - right - 1]
+                    icon = icon[:N - right - 1]
                     right = N - 1
 
-                self.color_list[left:right] += ratio * pixels
+                self.color_list[left:right] += ratio * icon
 
         # Handle subpixel positioning.
         whole, fraction = divmod(self.position * N, 1)
