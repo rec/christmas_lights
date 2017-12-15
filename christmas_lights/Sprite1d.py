@@ -12,6 +12,7 @@ class Sprite1d:
         self.position = position
         self.center = int(len(self.icon) / 2) if center is None else center
         self.fps = 0
+        print('!!!', speed, bound, position, self.center)
 
     def _combine_numpy(self, left, right, ratio, pixels):
         self.color_list[left:right] += ratio * pixels
@@ -52,6 +53,7 @@ class Sprite1d:
 
     def move(self, amt):
         self.position += amt * self.speed / self.fps
+        print('move', self.position, self.speed, self.fps)
 
     def bounce(self):
         left, right = self.bound

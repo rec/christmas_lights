@@ -58,7 +58,6 @@ class Light:
             add(left + 1, right + 1, fraction)
 
     def _move(self, amt):
-        print('move', self.position, self.bound, self.speed, self.fps)
         self.position += amt * self.speed / self.fps
         left, right = self.bound
         if self.position < left and self.speed < 0:

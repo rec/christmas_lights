@@ -1,4 +1,4 @@
-from . import light, SpriteLight
+from . import light2, SpriteLight
 
 import math
 from bibliopixel.animation import BaseStripAnim
@@ -50,7 +50,7 @@ class Searchlights(BaseStripAnim):
         bounds = bounds or [(0, 1)]
 
         arrays = speeds, bounds, positions, colors, widths, shapes
-        Light = (light.Light, SpriteLight.Light)[1]
+        Light = light2.Light if True else SpriteLight.Light
 
         def make_light(i):
             return Light(self.color_list, *[a[i % len(a)] for a in arrays])
