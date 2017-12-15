@@ -3,7 +3,8 @@ from . import envelope, Sprite1d
 
 
 class Light(Sprite1d.Sprite1d):
-    def __init__(self, color_list, speed, bound, position, color, width, shape):
+    def __init__(self, color_list, speed, acceleration,
+                 bound, position, color, width, shape):
         def number(x):
             if isinstance(x, numbers.Number):
                 return x
@@ -23,12 +24,14 @@ class Light(Sprite1d.Sprite1d):
         icon = np.outer(env, color)
 
         super().__init__(
-            icon, color_list, number(speed), bound, number(position))
+            icon, color_list, number(speed), number(acceleration), bound,
+            number(position))
 
     def step(self, amt):
         self.display()
         self.move(amt)
         self.bounce()
+
     def render(self):
         whole, fraction = divmod(self.position * len(self.icon), 1)
         left = int(whole) - self.center

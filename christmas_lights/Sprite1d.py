@@ -1,13 +1,14 @@
 class Sprite1d:
     """A one-dimensional sprite with subpixel positioning."""
-    def __init__(self, icon, color_list, speed=0, bound=(0, 1), position=0,
-                 center=None):
+    def __init__(self, icon, color_list, speed=0, acceleration=0, bound=(0, 1),
+                 position=0, center=None):
         self.color_list = color_list
         if hasattr(color_list, 'dtype'):
             self._combine = self._combine_numpy
 
         self.icon = icon
         self.speed = speed
+        self.acceleration = acceleration
         self.bound = bound
         self.position = position
         self.center = int(len(self.icon) / 2) if center is None else center
@@ -24,7 +25,8 @@ class Sprite1d:
             self._add(left + 1, right + 1, fraction)
 
     def move(self, amt):
-        self.position += amt * self.speed / self.fps
+        self.position += amt * (self.speed + self.acceleration / 2) / self.fps
+        self.speed += self.acceleration
 
     def bounce(self):
         left, right = self.bound

@@ -11,7 +11,8 @@ DEFAULT_SPEED = 1 / 3
 class Searchlights(BaseStripAnim):
     def __init__(self, layout, *, count=3, speeds=DEFAULT_SPEED, bounds=None,
                  positions=None, colors=None, widths=None, shapes='linear',
-                 background_color=util.colors.Black, **kwds):
+                 accelerations=None, background_color=util.colors.Black,
+                 **kwds):
         """
         Arguments
 
@@ -30,8 +31,12 @@ class Searchlights(BaseStripAnim):
         if not widths:
             widths = [1 / (2 * count)]
 
+        accelerations = accelerations or [0]
+
         if not isinstance(speeds, (list, tuple)):
             speeds = [speeds]
+        if not isinstance(accelerations, (list, tuple)):
+            accelerations = [accelerations]
         if not isinstance(widths, (list, tuple)):
             widths = [widths]
         if not isinstance(shapes, (list, tuple)):
@@ -49,7 +54,8 @@ class Searchlights(BaseStripAnim):
         n = len(self.color_list)
         bounds = bounds or [(0, 1)]
 
-        arrays = speeds, bounds, positions, colors, widths, shapes
+        arrays = (
+            speeds, accelerations, bounds, positions, colors, widths, shapes)
         Light = light.Light
 
         def make_light(i):
