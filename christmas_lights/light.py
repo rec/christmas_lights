@@ -13,11 +13,11 @@ class Light(Sprite1d.Sprite1d):
             return random.uniform(lo, hi)
 
         self.color = np.array(color, dtype=float)
-        self.radius = max(1, round(number(width) * len(color_list) / 2))
+        radius = max(1, round(number(width) * len(color_list) / 2))
         curve = envelope.CURVES[shape]
 
-        fade_in = curve(0, 1, self.radius)
-        fade_out = curve(1, 0, self.radius)
+        fade_in = curve(0, 1, radius)
+        fade_out = curve(1, 0, radius)
 
         env = np.concatenate([fade_in, fade_out])
         icon = np.outer(env, color)

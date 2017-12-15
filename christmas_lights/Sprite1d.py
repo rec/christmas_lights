@@ -16,7 +16,8 @@ class Sprite1d:
     def display(self):
         # Handle subpixel positioning.
         whole, fraction = divmod(self.position * len(self.color_list), 1)
-        left, right = int(whole) - self.radius, int(whole) + self.radius
+        left = int(whole) - self.center
+        right = left + len(self.icon)
 
         self._add(left, right, 1 - fraction)
         if fraction:
