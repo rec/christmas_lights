@@ -17,7 +17,7 @@ class Sprite1d:
         self.center = int(len(self.icon) / 2) if center is None else center
         self.fps = 0
 
-    def _display(self):
+    def display(self):
         # Handle subpixel positioning.
         whole, fraction = divmod(self.position * len(self.color_list), 1)
         left, right = int(whole) - self.radius, int(whole) + self.radius
@@ -25,6 +25,18 @@ class Sprite1d:
         self._add(left, right, 1 - fraction)
         if fraction:
             self._add(left + 1, right + 1, fraction)
+
+    def move(self, amt):
+        self.position += amt * self.speed / self.fps
+
+    def bounce(self):
+        left, right = self.bound
+        if self.position < left and self.speed < 0:
+            self.position = left + (left - self.position)
+            self.speed = -self.speed
+        if self.position >= right and self.speed > 0:
+            self.position = right - (self.position - right)
+            self.speed = -self.speed
 
     def _combine_numpy(self, left, right, ratio, pixels):
         self.color_list[left:right] += ratio * pixels
@@ -35,54 +47,23 @@ class Sprite1d:
             pixel = pixels[i - left]
             color = tuple(c + ratio * p for c, p in zip(color, pixel))
 
-    def _combine_clipped(self, left, right, ratio):
+    def _add(self, left, right, ratio):
         pixels = self.icon
 
-        if right < 0 and left >= len(self.icon):
-            # The sprite is entirely off the screen.
+        # Is the searchlight visible?
+        if right < 0 or left >= len(self.color_list):
             return
-
         if left < 0:
             # It's partly off the left side.
             pixels = pixels[-left:]
             left = 0
 
-        if right >= len(self.icon):
+        if right >= len(self.color_list):
             # It's partly off the right side.
-            pixels = pixels[:len(self.icon) - right - 1]
-            right = len(self.icon) - 1
+            pixels = pixels[:len(self.color_list) - right - 1]
+            right = len(self.color_list) - 1
 
         self._combine(left, right, ratio, pixels)
-
-    def _move(self, amt):
-        self.position += amt * self.speed / self.fps
-
-    def _bounce(self):
-        left, right = self.bound
-        if self.position < left and self.speed < 0:
-            self.position = left + (left - self.position)
-            self.speed = -self.speed
-        if self.position >= right and self.speed > 0:
-            self.position = right - (self.position - right)
-            self.speed = -self.speed
-
-    def _add(self, left, right, ratio):
-        # print('add', left, right, ratio)
-        icon = self.icon
-
-        # Is the searchlight visible?
-        if right >= 0 and left < len(self.color_list):
-            if left < 0:
-                # It's partly off the left side.
-                icon = icon[-left:]
-                left = 0
-
-            if right >= len(self.color_list):
-                # It's partly off the right side.
-                icon = icon[:len(self.color_list) - right - 1]
-                right = len(self.color_list) - 1
-
-            self.color_list[left:right] += ratio * icon
 
 
 class Light(Sprite1d):
@@ -109,6 +90,6 @@ class Light(Sprite1d):
             icon, color_list, number(speed), bound, number(position))
 
     def step(self, amt):
-        self._display()
-        self._move(amt)
-        self._bounce()
+        self.display()
+        self.move(amt)
+        self.bounce()
