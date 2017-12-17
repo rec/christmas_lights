@@ -18,7 +18,7 @@ def _make(function, inverse):
     return distribution
 
 
-log = make(math.log, math.exp)
-exp = make(math.exp, math.log)
-sqr = make(lambda x: x * x, math.sqrt)
-sqrt = make(math.sqrt, lambda x: x * x)
+log = _make(math.log, math.exp)
+exp = _make(math.exp, math.log)
+sqr = _make(lambda x: x * x, math.sqrt)
+sqrt = _make(math.sqrt, lambda x: x * x)

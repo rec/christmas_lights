@@ -1,6 +1,9 @@
-import numpy
+import numpy, random
 from bibliopixel.animation import BaseStripAnim, BaseAnimation
-from bibliopixel import colors
+from bibliopixel.colors import conversions
+from bibliopixel import util
+from . Searchlights import Searchlights
+from . import distributions
 
 PROJECT = {
     'layout': {
@@ -52,8 +55,31 @@ class Sort(BaseAnimation):
 
     def step(self, amt=1):
         for i, color in enumerate(self.color_list):
+            color = [round(c) for c in color]
             if i and conversions.color_cmp(prev, color) * self.direction > 0:
-                self.color_list[i:i + 1] = self.color_list[i:i + 1:-1]
+                self.color_list[i - 1:i] = self.color_list[i:i - 1:-1]
                 return
 
             prev = color
+
+
+class Rain(BaseAnimation):
+    def __init__(self, layout, *, colors=None, rate=10, **kwds):
+        self.colors = colors or (
+            (0, 0, 0), (0, 0, 0),
+            (0, 0, 0), (0, 0, 0),
+            (70, 70, 70), (35, 35, 35),
+            (80, 20, 20), (45, 5, 5),
+            (20, 80, 20), (5, 45, 5),
+        )
+        self.distrib = distributions.poisson(rate)
+        self.wait = 0
+        super().__init__(layout)
+
+    def step(self, amt=1):
+        if self.wait > 0:
+            self.wait -= 1
+        else:
+            index = random.randrange(len(self.color_list))
+            self.color_list[index] = random.choice(self.colors)
+            self.wait = self.distrib() * self.runner.fps

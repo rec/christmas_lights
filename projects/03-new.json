@@ -1,30 +1,13 @@
 {
-    "driver": {
-        "typename": "serial",
-        "ledtype": "LPD8806",
-        "c_order": "BRG",
-        "gamma": [1.1, 0.5, 0]
-    },
-
-    "layout": "strip",
-    "dimensions": 101,
-
-    "maker": {"numpy_dtype": "float"},
-
-    "aliases": {
-        "cl": "christmas_lights.animations"
-    },
-
     "animation": {
-        "typename": "sequence",
-        "slideshow": 8,
-        "run": {
-            "fps": 30
-        },
+        "slideshow": [5, 10, 1, 10, 10],
+
         "animations": [
-            "christmas_lights.animations.Randomize",
-            "christmas_lights.animations.ExponentialFade",
-            "christmas_lights.Searchlights"
+            "@cl.Rain",
+            "@cl.Sort",
+            "@cl.Randomize",
+            "@cl.ExponentialFade",
+            "@cl.Searchlights"
         ]
     }
 }

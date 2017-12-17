@@ -4,6 +4,7 @@
         "run": {
             "fps": 30
         },
+
         "animations": [
             "@bpa.ColorChase",
             "@bpa.ColorFade",
@@ -20,7 +21,7 @@
             "@bpa.Searchlights",
             "@bpa.Wave",
             "@bpa.Wave.WaveMove",
-            "@bpa.WhiteTwinkle",
+            "@bpa.WhiteTwinkle"
         ]
     }
 }
