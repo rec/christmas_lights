@@ -22,15 +22,16 @@ class Fill(BaseAnimation):
 
 
 class ExponentialFade(BaseAnimation):
-    def __init__(self, layout, *, ratio, color=None, **kwds):
+    def __init__(self, layout, *, ratio=0.98, color=None, **kwds):
         super().__init__(layout, preclear=False, **kwds)
         self.ratio = ratio
         self.color = color and numpy.array(color, dtype='float') * (1 - ratio)
 
     def step(self, amt=1):
-        self.color_list *= self.ratio
+        cl = self.color_list
+        cl *= self.ratio
         if self.color:
-             self.color_list[:None] += self.color
+             cl[:None] += self.color
 
 
 class Randomize(BaseAnimation):
@@ -40,7 +41,8 @@ class Randomize(BaseAnimation):
         self.count = 0
 
     def step(self, amt=1):
-        self.color_list[:] = numpy.random.rand(colors.shape) * 255
+        cl = self.color_list
+        cl[:] = numpy.random.rand(*cl.shape) * 255
 
 
 class Sort(BaseAnimation):
