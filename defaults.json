@@ -1,0 +1,25 @@
+{
+    "aliases": {
+        "bpa": "BiblioPixelAnimations.strip",
+        "cl": "christmas_lights.animations"
+    },
+    "animation": {
+        "run": {
+            "fps": 60
+        },
+        "typename": "sequence"
+    },
+    "dimensions": 80,
+    "driver": {
+        "c_order": "BRG",
+        "gamma": [
+            1.1,
+            0.5,
+            0
+        ],
+        "ledtype": "LPD8806",
+        "typename": "serial"
+    },
+    "numbers": "float",
+    "path": "."
+}
