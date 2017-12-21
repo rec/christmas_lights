@@ -1,7 +1,8 @@
 {
     "aliases": {
         "bpa": "BiblioPixelAnimations.strip",
-        "cl": "christmas_lights.animations"
+        "cl": "christmas_lights",
+        "cla": "christmas_lights.animations"
     },
     "animation": {
         "run": {

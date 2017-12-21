@@ -3,11 +3,11 @@
         "slideshow": [5, 10, 1, 10, 10],
 
         "animations": [
-            "@cl.Rain",
-            "@cl.Sort",
-            "@cl.Randomize",
-            "@cl.ExponentialFade",
-            "@cl.Searchlights"
+            "@cla.Rain",
+            "@cla.Sort",
+            "@cla.Randomize",
+            "@cla.ExponentialFade",
+            "@cla.Searchlights"
         ]
     }
 }
