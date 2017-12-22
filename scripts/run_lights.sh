@@ -1,6 +1,4 @@
 #!/bin/bash
 
-for n in {1..6}; do
-    date
-    sleep 5
-done
+source /development/env/bp/bin/activate
+bp -v projects/04-bitsstream.json -d strip.json
