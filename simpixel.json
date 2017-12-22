@@ -1,0 +1,17 @@
+{
+    "aliases": {
+        "bpa": "BiblioPixelAnimations.strip",
+        "cl": "christmas_lights",
+        "cla": "christmas_lights.animations"
+    },
+    "animation": {
+        "run": {
+            "fps": 60
+        },
+        "typename": "sequence"
+    },
+    "dimensions": 80,
+    "driver": "simpixel",
+    "numbers": "float",
+    "path": "."
+}
