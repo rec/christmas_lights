@@ -1,0 +1,10 @@
+{
+    "animation": {
+        "typename": "@cl.streamer.RandomWalk",
+        "speed": [20, 100],
+        "speed_variance": 5,
+        "variance": 25,
+        "period": 50,
+        "bounds": [0, 128]
+    }
+}
