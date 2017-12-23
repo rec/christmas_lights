@@ -1,6 +1,6 @@
 {
-   "dimensions": 80,
     "driver": {
+        "num": 80,
         "c_order": "BRG",
         "gamma": [
             1.1,
@@ -9,5 +9,10 @@
         ],
         "ledtype": "LPD8806",
         "typename": "serial"
-    }
+    },
+    "drivers": [
+        {"device_id": 2},
+        {"device_id": 3}
+    ],
+    "layout": "strip"
 }

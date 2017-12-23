@@ -10,7 +10,6 @@
         },
         "typename": "sequence"
     },
-    "dimensions": 80,
     "numbers": "float",
     "path": "."
 }
