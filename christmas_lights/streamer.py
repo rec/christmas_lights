@@ -74,33 +74,38 @@ class Streamer(BaseAnimation):
         raise NotImplementedError
 
 
-# https://wiki.python.org/moin/BitManipulation
-def bitLenCount(int_type):
-    count = 0
-    while (int_type):
-        count += (int_type & 1)
-        int_type >>= 1
-    return count
-
-
 class Alternate(Streamer):
     def get_color(self, i):
         return (0, 0, 0) if i % 4 else (0, 0, 128)
 
 
-class BitCounter(Streamer):
+class Counter(Streamer):
     def __init__(self, *args, scale=20, offsets=(0, 1, 2), **kwds):
         super().__init__(*args, **kwds)
         assert len(offsets) == 3
         self.offsets = offsets
         self.scale = scale
 
-
     def get_color(self, i):
-        color = [self.scale * bitLenCount(i + o) for o in self.offsets]
-        # print(color)
-        color[2] = 0
-        return color
+        return [self.scale * self.count(i + o) for o in self.offsets]
+
+    def count(self, i):
+        raise NotImplementedError
+
+
+class BitCounter(Counter):
+    def count(self, i):
+        # https://wiki.python.org/moin/BitManipulation
+        count = 0
+        while i:
+            count += (i & 1)
+            i >>= 1
+        return count
+
+
+class RightmostCounter(BitCounter):
+    def count(self, i):
+        return i & -i
 
 
 class RandomWalk(Streamer):
