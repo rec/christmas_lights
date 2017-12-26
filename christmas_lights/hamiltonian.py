@@ -33,6 +33,7 @@ class HamiltonianCounter:
         assert not (n % 2), 'n must be even'
         assert n > 2, 'n must be > 2'
         self.n = n
+        self.scale = 256 / n
         inverted = [i in inverted.lower() for i in 'rgb']
         self.inverters = [self.invert if i else lambda x: x for i in inverted]
         self.order = channel_order.make(order)
@@ -43,7 +44,7 @@ class HamiltonianCounter:
 
     def next(self):
         color = [self._color[o] for o in self.order]
-        color = [invert(c) for invert, c in zip(self.inverters, color)]
+        color = [self.scale * inv(c) for inv, c in zip(self.inverters, color)]
 
         self._color = next_hamiltonian(self.n, *self._color)
         return color

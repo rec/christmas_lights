@@ -1,0 +1,31 @@
+{
+    "dimensions": 160,
+    "animation": {
+        "typename": "sequence",
+        "slideshow": 2,
+        "animations": [
+            {
+                "typename": "christmas_lights.Searchlights",
+                "count": 12,
+                "speeds": "rand(-0.1, 0.1)",
+                "colors": ["red", "green"]
+            },
+            "@cl.streamer.RandomWalk",
+            "@bpa.ColorChase",
+            "@bpa.ColorFade",
+            "@bpa.ColorPattern",
+            "@bpa.ColorWipe",
+            "@bpa.FireFlies",
+            "@bpa.HalvesRainbow",
+            "@bpa.LarsonScanners.LarsonRainbow",
+            "@bpa.LarsonScanners.LarsonScanner",
+            "@bpa.LinearRainbow",
+            "@bpa.PixelPingPong",
+            "@bpa.Rainbows.Rainbow",
+            "@bpa.Rainbows.RainbowCycle",
+            "@bpa.Searchlights",
+            "@bpa.Wave",
+            "@bpa.WhiteTwinkle"
+        ]
+    }
+}

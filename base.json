@@ -2,6 +2,7 @@
     "aliases": {
         "bpa": "BiblioPixelAnimations.strip",
         "cl": "christmas_lights",
+        "cls": "christmas_lights.streamer",
         "cla": "christmas_lights.animations"
     },
     "animation": {

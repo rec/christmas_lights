@@ -2,7 +2,7 @@ import numpy as np
 import copy
 import random
 from bibliopixel.animation import BaseAnimation
-
+from . import hamiltonian
 
 
 def perturb(c, variance, bounds):
@@ -128,3 +128,12 @@ class RandomWalk(Streamer):
         result = [perturb(c, variance, self.bounds) for c in self.next_color]
         result, self.next_color = self.next_color, result
         return result
+
+
+class Hamiltonian(Streamer):
+    def __init__(self, *args, n=8, order=0, inverted='', **kwds):
+        super().__init__(*args, **kwds)
+        self.counter = hamiltonian.HamiltonianCounter(n, order, inverted)
+
+    def get_color(self, i):
+        return self.counter.next()
