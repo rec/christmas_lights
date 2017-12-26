@@ -1,10 +1,30 @@
 {
     "animation": {
-        "typename": "@cl.streamer.RandomWalk",
-        "speed": [20, 100],
-        "speed_variance": 5,
-        "variance": 25,
-        "period": 50,
-        "bounds": [0, 128]
+        "typename": "sequence",
+        "slideshow": [20, 20, 10, 10, 10, 10, 10, 10, 10,
+                      10, 10, 10, 10, 10, 10, 10, 10, 10],
+        "animations": [
+            {
+                "typename": "christmas_lights.Searchlights",
+                "count": 12,
+                "speeds": "rand(-0.1, 0.1)",
+                "colors": ["red", "green"]
+            },
+            "@bpa.ColorChase",
+            "@bpa.ColorFade",
+            "@bpa.ColorPattern",
+            "@bpa.ColorWipe",
+            "@bpa.FireFlies",
+            "@bpa.HalvesRainbow",
+            "@bpa.LarsonScanners.LarsonRainbow",
+            "@bpa.LarsonScanners.LarsonScanner",
+            "@bpa.LinearRainbow",
+            "@bpa.PixelPingPong",
+            "@bpa.Rainbows.Rainbow",
+            "@bpa.Rainbows.RainbowCycle",
+            "@bpa.Searchlights",
+            "@bpa.Wave",
+            "@bpa.WhiteTwinkle"
+        ]
     }
 }

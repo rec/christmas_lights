@@ -1,20 +1,8 @@
 {
-    "driver": {
-        "typename": "serial",
-        "ledtype": "LPD8806",
-        "c_order": "BRG",
-        "gamma": [1.1, 0.5, 0]
-    },
-    "dimensions": 78,
-    "run": {
-        "fps": 60
-    },
     "animation": {
         "typename": "christmas_lights.Searchlights",
-        "count": 8,
-        "speeds": "rand(-0.4, 0.4)",
-        "accelerations": 0.02,
+        "count": 10,
+        "speeds": "rand(-0.1, 0.1)",
         "colors": ["red", "green"]
-    },
-    "maker": {"numpy_dtype": "float"}
+    }
 }

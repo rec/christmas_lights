@@ -1,0 +1,12 @@
+{
+    "animation": {
+        "typename": "sequence",
+        "slideshow": [20, 20, 10, 10, 10, 10, 10, 10, 10,
+                      10, 10, 10, 10, 10, 10, 10, 10, 10],
+        "animations": [
+            "@bpa.Wave",
+            "@bpa.Wave.WaveMove",
+            "@bpa.WhiteTwinkle"
+        ]
+    }
+}
