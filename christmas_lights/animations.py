@@ -33,7 +33,7 @@ class ExponentialFade(BaseAnimation):
     def step(self, amt=1):
         cl = self.color_list
         cl *= self.ratio
-        if self.color:
+        if self.color is not None:
              cl[:None] += self.color
 
 
