@@ -3,7 +3,8 @@
         "bpa": "BiblioPixelAnimations.strip",
         "cl": "christmas_lights",
         "cls": "christmas_lights.streamer",
-        "cla": "christmas_lights.animations"
+        "cla": "christmas_lights.animations",
+        "fade": "christmas_lights.animations.ExponentialFade"
     },
     "animation": {
         "run": {

@@ -1,7 +1,4 @@
 {
-    "aliases": {
-        "fade": "christmas_lights.animations.ExponentialFade"
-    },
     "dimensions": 160,
     "animation": {
         "slideshow": 5,
