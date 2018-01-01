@@ -1,7 +1,7 @@
 {
     "animation": {
         "typename": "sequence",
-        "slideshow": [30, 45, 20, 10, 45],
+        "slideshow": 1,
         "animations": [
             {
                 "typename": "christmas_lights.Searchlights",
@@ -17,7 +17,15 @@
                 "period": 50,
                 "bounds": [0, 128]
             },
+            "@bpa.ColorChase",
+            "@bpa.ColorFade",
+            "@bpa.ColorPattern",
+            "@bpa.ColorWipe",
             "@bpa.FireFlies",
+            "@bpa.HalvesRainbow",
+            "@bpa.LarsonScanners.LarsonRainbow",
+            "@bpa.Rainbows.Rainbow",
+            "@bpa.Rainbows.RainbowCycle",
             "@bpa.Wave",
             "@bpa.WhiteTwinkle"
         ]
