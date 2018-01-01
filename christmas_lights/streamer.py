@@ -51,17 +51,19 @@ class Streamer(BaseAnimation):
         self.total_pixels += self.speed / self.runner.fps
         needed = int(self.total_pixels) - self.cache_offset
 
-        if needed:
-            self.cache[:-needed] = self.cache[needed:]
-
+        if needed < 0:
+            print('went backwards', needed, self.cache_offset, total_pixels)
+        elif needed > 0:
             start = len(self.cache) - needed
-            for i in range(needed):
-                try:
-                    self.cache[start + i] = self.get_color(
-                        self.cache_offset + i)
-                except:
-                    raise
+            if start <= 0:
+                self.cache_offset -= start
+                needed = len(self.cache)
+                start = 0
+            else:
+                self.cache[:-needed] = self.cache[needed:]
 
+            for i in range(needed):
+                self.cache[start + i] = self.get_color(self.cache_offset + i)
             self.cache_offset += needed
 
         cl = self.color_list
