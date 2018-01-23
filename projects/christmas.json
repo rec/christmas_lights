@@ -1,10 +1,10 @@
 {
     "animation": {
         "typename": "sequence",
-        "slideshow": [30, 45, 20, 10, 45],
+        "length": [30, 45, 20, 10, 45],
         "animations": [
             {
-                "slideshow": 3,
+                "length": 3,
                 "typename": "sequence",
 
                 "animations": [

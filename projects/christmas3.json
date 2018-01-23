@@ -2,7 +2,7 @@
     "dimensions": 160,
     "animation": {
         "typename": "sequence",
-        "slideshow": 2,
+        "length": 2,
         "animations": [
             {
                 "typename": "christmas_lights.Searchlights",

@@ -1,6 +1,6 @@
 {
     "animation": {
-        "slideshow": [5, 10, 1, 10, 10],
+        "length": [5, 10, 1, 10, 10],
 
         "animations": [
             "@cla.Rain",

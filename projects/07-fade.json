@@ -1,7 +1,7 @@
 {
     "dimensions": 160,
     "animation": {
-        "slideshow": 5,
+        "length": 5,
         "typename": "sequence",
 
         "animations": [

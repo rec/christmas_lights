@@ -1,7 +1,7 @@
 {
     "animation": {
         "typename": "sequence",
-        "slideshow": 1,
+        "length": 1,
         "animations": [
             {
                 "typename": "christmas_lights.Searchlights",
