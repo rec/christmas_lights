@@ -12,6 +12,5 @@
         },
         "typename": "sequence"
     },
-    "numbers": "float",
-    "path": "."
+    "numbers": "float"
 }
