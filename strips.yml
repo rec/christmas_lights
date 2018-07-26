@@ -1,16 +1,13 @@
 driver:
-    num: 80
-    c_order: BRG
-    gamma: [
-        1.1
-        0.5
-        0
-    ]
-    ledtype: LPD8806
-    typename: serial
+  num: 80
+  c_order: BRG
+  gamma: [1.1, 0.5, 0]
+  ledtype: LPD8806
+  typename: serial
 
-drivers: [
-    device_id: 1
-    device_id: 3
-]
+drivers:
+  - device_id: 0
+  - device_id: 1
+  - device_id: 3
+
 layout: strip
