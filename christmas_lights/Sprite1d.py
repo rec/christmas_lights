@@ -49,9 +49,10 @@ class Sprite1d:
     def _add(self, left, right, ratio):
         pixels = self.icon
 
-        # Is the searchlight visible?
+        # Is the sprite visible?
         if right < 0 or left >= len(self.color_list):
             return
+
         if left < 0:
             # It's partly off the left side.
             pixels = pixels[-left:]
