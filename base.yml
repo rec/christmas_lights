@@ -12,3 +12,4 @@ animation:
   typename: sequence
 
 numbers: float
+layout: strip

@@ -1,0 +1,16 @@
+shape: [3, 80]
+
+run:
+    fps: 30
+    seconds: 14
+
+animation:
+    typename: sequence
+    length: 0.5
+    animations:
+      - typename: fill
+        color: red
+      - typename: fill
+        color: green
+      - typename: fill
+        color: blue
