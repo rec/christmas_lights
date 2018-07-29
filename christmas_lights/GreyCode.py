@@ -1,22 +1,30 @@
-def gray_code(count):
-    def recurse(g, n):
-        if n <= 0:
-            return
+import numpy as np
+from bibliopixel import animation
 
-        r = range(len(g) - 1, -1, -1)
-        for i in r:
-            char = '1' + g[i]
-            g.append(char)
+# https://stackoverflow.com/a/10411108/43839
+binary_to_sting = '{0:08b}'.format
 
-        for i in r:
-            g[i] = '0' + g[i]
+GREYCODE = tuple(n ^ (n // 2) for n in range(256))
 
-        recurse(g, n - 1)
-
-    g = ['0', '1']
-    recurse(g, count - 1)
-    return g
+def array(x):
+    return np.array(x, dtype='float')
 
 
-if __name__ == '__main__':
-    print(gray_code(3))
+def fill_with_greycode(color_list, offsets):
+    assert len(offsets) == 3
+    for i in range(len(color_list)):
+        for j, o in enumerate(offsets):
+            n = int((i + o) % 256)
+            color_list[i][j] = n ^ (n // 2)
+
+
+class GreyCode(animation.Animation):
+    def __init__(self, *args, offsets=None, speeds=None, **kwds):
+        super().__init__(*args, **kwds)
+        self.offsets = array(offsets or [0, 0, 0])
+        self.speeds = array(speeds or [0, 0, 0])
+        self._elapsed = array([0, 0, 0])
+
+    def step(self, amt=1):
+        fill_with_greycode(self.color_list, self.offsets + self._elapsed)
+        self._elapsed += self.speeds
