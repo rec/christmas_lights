@@ -28,7 +28,7 @@ def percent_perturb(c, variance, bounds):
 
 class Streamer(BaseAnimation):
     def __init__(
-            self, *args, get_color=None, speed=10, speed_variance=0, **kwds):
+            self, *args, speed=10, speed_variance=0, pre_fill=False, **kwds):
         super().__init__(*args, **kwds)
         try:
             self.speed_bounds = tuple(speed)
@@ -37,14 +37,15 @@ class Streamer(BaseAnimation):
 
         self.speed = self.speed_bounds[0]
         self.speed_variance = speed_variance
-        self.get_color = get_color or self.get_color
+        self.pre_fill = pre_fill
         assert not speed_variance or len(speed)
         self.total_pixels = 0
 
     def pre_run(self):
         self.cache = np.empty((1 + len(self.color_list), 3))
-        for i, c in enumerate(self.cache):
-            self.cache[i] = self.get_color(i)
+        if self.pre_fill:
+            for i, c in enumerate(self.cache):
+                self.cache[i] = self.get_color(i)
         self.cache_offset = 0
 
     def step(self, amt=1):
@@ -52,7 +53,8 @@ class Streamer(BaseAnimation):
         needed = int(self.total_pixels) - self.cache_offset
 
         if needed < 0:
-            print('went backwards', needed, self.cache_offset, total_pixels)
+            print(
+                'went backwards', needed, self.cache_offset, self.total_pixels)
         elif needed > 0:
             start = len(self.cache) - needed
             if start <= 0:
@@ -111,12 +113,13 @@ class RightmostCounter(BitCounter):
 
 
 class RandomWalk(Streamer):
-    def __init__(self, *args, variance=1, bounds=(0, 180), period=0, **kwds):
+    def __init__(self, *args,
+                 variance=1, bounds=(0, 180), color=None, period=0, **kwds):
         super().__init__(*args, **kwds)
 
         self.cur_step = 0
         self.variance = variance
-        self.next_color = [random.randint(*bounds) for i in range(3)]
+        self.next_color = color or [random.randint(*bounds) for i in range(3)]
         self.choices = -1, 1
         self.bounds = bounds
 

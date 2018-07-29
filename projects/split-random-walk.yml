@@ -1,0 +1,30 @@
+aliases:
+  walk: christmas_lights.streamer.RandomWalk
+
+animation:
+  typename: split
+  size: [80, 100, 80]
+  animations:
+    - typename: $walk
+      speed: [5, 20]
+      speed_variance: 3
+      variance: 10
+      period: 100
+      bounds: [0, 128]
+      color: black
+
+    - typename: $walk
+      speed: [-100, -20]
+      speed_variance: 5
+      variance: 25
+      period: 50
+      bounds: [0, 128]
+      color: black
+
+    - typename: $walk
+      speed: [5, 20]
+      speed_variance: 3
+      variance: 10
+      period: 100
+      bounds: [0, 128]
+      color: black

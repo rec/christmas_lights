@@ -6,10 +6,10 @@ driver:
 
 drivers:
   - device_id: 1
-    num: 80
+    num: 20
 
   - device_id: 3
-    num: 100
+    num: 20
 
   - device_id: 0
-    num: 80
+    num: 20
