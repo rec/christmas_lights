@@ -1,31 +1,31 @@
 animation:
     typename: sequence
-    length: [30, 45, 20, 10, 45,]
+    length: [30, 20, 45, 10, 45,]
     animations:
-      - length: 3
-        typename: sequence
+      - typename: sequence
+        length: 5
 
         animations:
-          - {typename: $fade, color: 0xff9900}
-          - {typename: $fade, color: 0xcc6600}
-          - {typename: $fade, color: 0xcccc00}
-          - {typename: $fade, color: 0xffff00}
-          - {typename: $fade, color: 0x666633}
-          - {typename: $fade, color: 0xcc9900}
-          - {typename: $fade, color: 0xffbf00}
+          - {typename: $fade, color: '0xff9900'}
+          - {typename: $fade, color: '0xcc6600'}
+          - {typename: $fade, color: '0xcccc00'}
+          - {typename: $fade, color: '0xffff00'}
+          - {typename: $fade, color: '0x666633'}
+          - {typename: $fade, color: '0xcc9900'}
+          - {typename: $fade, color: '0xffbf00'}
 
-          - typename: christmas_lights.Searchlights
-            count: 12
-            speeds: rand(-0.1 0.1)
-            colors: [red, green]
+      - typename: christmas_lights.Searchlights
+        count: 12
+        speeds: rand(-0.1, 0.1)
+        colors: [red, green]
 
-          - typename: $cl.streamer.RandomWalk
-            speed: [20, 100]
-            speed_variance: 5
-            variance: 25
-            period: 50
-            bounds: [0, 128]
+      - typename: $cl.streamer.RandomWalk
+        speed: [20, 100]
+        speed_variance: 5
+        variance: 25
+        period: 50
+        bounds: [1, 128]
 
-          - $bpa.FireFlies
-          - $bpa.Wave
-          - $bpa.WhiteTwinkle
+      - $bpa.FireFlies
+      - $bpa.Wave
+      - $bpa.WhiteTwinkle

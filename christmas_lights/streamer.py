@@ -42,10 +42,12 @@ class Streamer(BaseAnimation):
         self.total_pixels = 0
 
     def pre_run(self):
-        self.cache = np.empty((1 + len(self.color_list), 3))
         if self.pre_fill:
+            self.cache = np.empty((1 + len(self.color_list), 3))
             for i, c in enumerate(self.cache):
                 self.cache[i] = self.get_color(i)
+        else:
+            self.cache = np.zeros((1 + len(self.color_list), 3))
         self.cache_offset = 0
 
     def step(self, amt=1):
