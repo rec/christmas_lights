@@ -1,5 +1,4 @@
 {
-    "dimensions": 160,
     "animation": {
         "typename": "@cl.streamer.RightmostCounter",
         "scale": 10,
