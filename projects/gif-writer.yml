@@ -1,0 +1,11 @@
+driver:
+  typename: .gif_writer
+  filename: searchlight.gif
+  render:
+    pixel_width: 8
+    padding: 2
+
+  time: 10
+
+run:
+  flat_out: True

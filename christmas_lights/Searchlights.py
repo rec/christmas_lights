@@ -53,13 +53,10 @@ class Searchlights(BaseStripAnim):
 
         n = len(self.color_list)
         bounds = bounds or [(0, 1)]
-
-        arrays = (
-            speeds, accelerations, bounds, positions, colors, widths, shapes)
-        Light = light.Light
+        A = speeds, accelerations, bounds, positions, colors, widths, shapes
 
         def make_light(i):
-            return Light(self.color_list, *[a[i % len(a)] for a in arrays])
+            return light.Light(self.color_list, *[a[i % len(a)] for a in A])
 
         self.lights = [make_light(i) for i in range(count)]
 

@@ -1,0 +1,13 @@
+shape: 64
+
+animation:
+  typename: christmas_lights.Searchlights
+  count: 3
+  speeds: 'rand(-0.3, 0.3)'
+  colors: [red, green]
+  widths: 0.2
+
+run:
+  fps: 24
+
+numbers: float

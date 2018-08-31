@@ -1,4 +1,4 @@
 #!/bin/bash
 
 source /development/env/bp/bin/activate
-bp -vs projects/christmas.json -d=base.yml -d=simpixel.yml
+bp -vs base.yml+simpixel.yml+projects/christmas.json

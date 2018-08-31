@@ -1,3 +1,6 @@
+import numbers, random
+
+
 class Sprite1d:
     """A one-dimensional sprite with subpixel positioning."""
     def __init__(self, icon, color_list, speed=0, acceleration=0, bound=(0, 1),
@@ -7,10 +10,10 @@ class Sprite1d:
             self._combine = self._combine_numpy
 
         self.icon = icon
-        self.speed = speed
-        self.acceleration = acceleration
+        self.speed = to_number(speed)
+        self.acceleration = to_number(acceleration)
         self.bound = bound
-        self.position = position
+        self.position = to_number(position)
         self.center = int(len(self.icon) / 2) if center is None else center
         self.fps = 0
 
@@ -64,3 +67,12 @@ class Sprite1d:
             right = len(self.color_list) - 1
 
         self._combine(left, right, ratio, pixels)
+
+
+def to_number(x):
+    if isinstance(x, numbers.Number):
+        return x
+    if not x.startswith('rand('):
+        raise ValueError("Don't understand number '%s'" % x)
+    lo, hi = (float(i) for i in x[5:-1].split(','))
+    return random.uniform(lo, hi)

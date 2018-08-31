@@ -1,8 +1,0 @@
-{
-    "animation": {
-        "typename": "christmas_lights.Searchlights",
-        "count": 10,
-        "speeds": "rand(-0.1, 0.1)",
-        "colors": ["red", "green"]
-    }
-}
