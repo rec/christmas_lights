@@ -7,6 +7,7 @@ aliases:
 
 run:
   fps: 60
+  seconds: 10000000000
 
 animation:
   typename: sequence

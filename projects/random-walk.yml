@@ -4,6 +4,6 @@ animation:
   speed_variance: 5
   variance: 25
   period: 50
-  bounds: [0, 128]
+  bounds: [0, 255]
   color: grey
   pre_fill: true

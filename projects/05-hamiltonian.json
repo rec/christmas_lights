@@ -1,8 +1,7 @@
 {
-    "dimensions": 160,
     "animation": {
         "typename": "@cl.streamer.Hamiltonian",
         "n": 32,
-        "speed": 800
+        "speed": 25
     }
 }

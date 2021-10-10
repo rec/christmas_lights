@@ -1,10 +1,16 @@
 animation:
     typename: sequence
-    length: [30, 20, 45, 10, 45,]
+    length: 100000
+    # length: [30, 20, 45, 10, 45,]
     animations:
-      - typename: sequence
-        length: 5
+      - typename: $cl.streamer.RandomWalk
+        speed: [20, 100]
+        speed_variance: 5
+        variance: 25
+        period: 50
+        bounds: [1, 255]
 
+      - typename: sequence
         animations:
           - {typename: $fade, color: '0xff9900'}
           - {typename: $fade, color: '0xcc6600'}
@@ -18,13 +24,6 @@ animation:
         count: 12
         speeds: rand(-0.1, 0.1)
         colors: [red, green]
-
-      - typename: $cl.streamer.RandomWalk
-        speed: [20, 100]
-        speed_variance: 5
-        variance: 25
-        period: 50
-        bounds: [1, 128]
 
       - $bpa.FireFlies
       - $bpa.Wave
