@@ -1,0 +1,7 @@
+animation:
+  title: 'Hello, Rachel!'
+  typename: remote
+  open_page: true
+  animations:
+    - projects/random-walk.yml
+    - BiblioPixelAnimations.strip.Wave
