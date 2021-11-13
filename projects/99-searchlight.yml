@@ -1,5 +1,3 @@
-shape: 250
-
 animation:
     typename: christmas_lights.Searchlights
     count: 10

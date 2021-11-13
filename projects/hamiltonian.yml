@@ -1,0 +1,3 @@
+animation:
+  typename: christmas_lights.streamer.Hamiltonian
+  speed: 25

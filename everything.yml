@@ -1,7 +1,19 @@
+aliases:
+  bps: BiblioPixelAnimations.strip
+
 animation:
-  title: 'Hello, Rachel!'
+  title: '❤ Hello, Rachel! ❤'
   typename: remote
   open_page: true
+
   animations:
     - projects/random-walk.yml
-    - BiblioPixelAnimations.strip.Wave
+    - projects/99-searchlight.yml
+    - projects/hamiltonian.yml
+
+    - $bps.HalvesRainbow
+    - $bps.LinearRainbow
+    - $bps.Rainbows.Rainbow
+    - $bps.Rainbows.RainbowCycle
+    - $bps.Searchlights
+    - $bps.Twinkle

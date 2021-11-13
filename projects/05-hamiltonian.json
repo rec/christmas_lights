@@ -1,7 +1,0 @@
-{
-    "animation": {
-        "typename": "@cl.streamer.Hamiltonian",
-        "n": 32,
-        "speed": 25
-    }
-}
