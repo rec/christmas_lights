@@ -5,11 +5,13 @@ animation:
   title: '❤ Hello, Rachel! ❤'
   typename: remote
   open_page: true
+  external_access: true
 
   animations:
     - projects/random-walk.yml
     - projects/99-searchlight.yml
     - projects/hamiltonian.yml
+    - projects/fades.yml
 
     - $bps.HalvesRainbow
     - $bps.LinearRainbow
