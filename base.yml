@@ -6,7 +6,7 @@ aliases:
   fade: christmas_lights.animations.ExponentialFade
 
 run:
-  fps: 60
+  fps: 30
   seconds: 10000000000
 
 animation:
