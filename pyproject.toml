@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "christmas-lights"
+version = "0.1.0"
+description = ""
+authors = ["Tom Ritchford <tom@swirly.com>"]
+readme = "README.md"
+packages = [{include = "christmas_lights"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+bpx = {path = "/code/bpx", develop = true}
+leds = {path = "/code/leds", develop = true}
+xled = {path = "/code/xled", develop = true}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
