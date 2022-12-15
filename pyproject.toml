@@ -8,9 +8,9 @@ packages = [{include = "christmas_lights"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-bpx = {path = "/code/bpx", develop = true}
 leds = {path = "/code/leds", develop = true}
 xled = {path = "/code/xled", develop = true}
+tkl = {path = "/code/tkl", develop = true}
 
 [build-system]
 requires = ["poetry-core"]
